@@ -1,29 +1,27 @@
-apply plugin: 'java-library'
+apply plugin: 'kotlin'
 
-buildscript {
-    ext.kotlin_version = '1.3.0'
-    repositories {
-        google()
-        jcenter()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+configurations.all {
+    resolutionStrategy {
+        force "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     }
 }
-
-apply from: '../dependencies/dagger2.gradle'
-apply from: '../dependencies/rxjava2.gradle'
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.0"
+    def presentationDependencies = rootProject.ext.cacheDependencies
+    def presentationTestDependencies = rootProject.ext.cacheTestDependencies
+
+    compile presentationDependencies.javaxAnnotation
+
+    implementation presentationDependencies.kotlin
+    implementation presentationDependencies.javaxInject
+    implementation presentationDependencies.rxKotlin
+
+    testImplementation presentationTestDependencies.junit
+    testImplementation presentationTestDependencies.mockito
+    testImplementation presentationTestDependencies.assertj
+    testImplementation presentationTestDependencies.robolectric
     compile project(':domain')
 }
-
-sourceCompatibility = "7"
-targetCompatibility = "7"
