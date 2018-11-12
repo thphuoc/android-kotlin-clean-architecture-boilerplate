@@ -4,12 +4,13 @@ import android.com.domain.entities.Contact
 import android.com.presentation.base.BaseContract
 
 class ContactContract {
-    interface View : BaseContract.BaseView {
+    interface IView : BaseContract.IBaseView {
         fun showListContact(contacts: List<Contact>)
         fun showError()
     }
 
-    interface Presenter : BaseContract.BasePresenter {
-
+    interface IPresenter : BaseContract.IBasePresenter {
+        fun onClickRemoveContact(id: String)
+        fun onClickAddNewContact()
     }
 }

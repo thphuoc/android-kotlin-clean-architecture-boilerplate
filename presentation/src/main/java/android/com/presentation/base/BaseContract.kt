@@ -1,14 +1,15 @@
 package android.com.presentation.base
 
 class BaseContract {
-    interface BaseView {
+    interface IBaseView {
         fun showErrorDialog(code: String = "", message: String = "")
         fun showErrorToast(code: String = "", message: String = "")
     }
 
-    interface BasePresenter {
+    interface IBasePresenter {
         fun onViewLoaded()
         fun onStop()
         fun onDestroy()
+        fun onBackPressed()
     }
 }

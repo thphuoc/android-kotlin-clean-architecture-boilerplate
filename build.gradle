@@ -1,7 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext.kotlin_version = '1.3.0'
-    ext.dagger_version='2.17'
     repositories {
         google()
         jcenter()
@@ -21,6 +20,12 @@ allprojects {
         jcenter()
         mavenCentral()
     }
+}
+
+ext {
+    //dependencies
+    dagger_version = '2.17'
+    kotlin_version = '1.3.0'
 }
 
 task clean(type: Delete) {
