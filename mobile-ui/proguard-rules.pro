@@ -39,3 +39,72 @@
 
 # Top-level functions that can only be used by Kotlin.
 -dontwarn retrofit2.-KotlinExtensions
+
+##---------------------------------------------------------------------------
+# RETROFIT 2.x
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+
+-keepclasseswithmembers class * {
+    @retrofit2.http.* <methods>;
+}
+##---------------------------------------------------------------------------
+## GSON
+-keep class com.google.gson.** { *; }
+-keep class com.google.inject.** { *; }
+-keep class com.google.gson.examples.android.model.** { *; }
+-dontwarn com.google.gson.**
+
+-keep class sun.misc.Unsafe { *; }
+
+##---------------------------------------------------------------------------
+## OKHTTP 3
+-keep class okhttp3.internal.** { *; }
+-keep interface okhttp3.internal.** { *; }
+-dontwarn okhttp3.internal.**
+
+
+-keep class android.net.http.** { *; }
+
+##---------------------------------------------------------------------------
+# BUTTER KNIFE 8.x
+-keep public class * implements butterknife.Unbinder { public <init>(...); }
+
+-dontwarn butterknife.internal.**
+-keep class butterknife.** { *; }
+-keep class butterknife.**$Finder { *; }
+-keep class **$$ViewBinder { *; }
+-keep class **$ViewHolder { *; }
+
+-keepclasseswithmembernames class * { @butterknife.* <methods>; }
+-keepclasseswithmembernames class * { @butterknife.* <fields>; }
+
+##---------------------------------------------------------------------------
+## CRASHLYTICS
+-keep class com.crashlytics.** { *; }
+
+##---------------------------------------------------------------------------
+# OKIO - A modern I/O API for Java
+-dontwarn okio.**
+
+##---------------------------------------------------------------------------
+# RXJAVA
+-dontwarn rx.**
+-keep class rx.internal.util.unsafe.** { *; }
+
+-keep class rx.schedulers.Schedulers {
+    public static <methods>;
+}
+-keep class rx.schedulers.ImmediateScheduler {
+    public <methods>;
+}
+-keep class rx.schedulers.TestScheduler {
+    public <methods>;
+}
+-keep class rx.schedulers.Schedulers {
+    public static ** test();
+}
+
+##---------------------------------------------------------------------------
+# RETRO LAMBDA
+-dontwarn java.lang.invoke.*

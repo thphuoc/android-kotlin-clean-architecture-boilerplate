@@ -10,6 +10,6 @@ open class BasePresenter(view: BaseContract.IBaseView): BaseContract.IBasePresen
     override fun onDestroy() {
     }
 
-    override fun onBackPressed() {
+    override fun onResume() {
     }
 }

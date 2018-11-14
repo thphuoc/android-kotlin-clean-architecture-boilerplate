@@ -1,12 +1,11 @@
-package android.com.presentation.contact
+package android.com.presentation.browser
 
 import android.com.domain.entities.Contact
 import android.com.presentation.base.BaseContract
 
-class ContactContract {
+class BrowserContactContract {
     interface IView : BaseContract.IBaseView {
         fun showListContact(contacts: List<Contact>)
-        fun showError()
     }
 
     interface IPresenter : BaseContract.IBasePresenter {

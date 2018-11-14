@@ -9,7 +9,7 @@ class BaseContract {
     interface IBasePresenter {
         fun onViewLoaded()
         fun onStop()
+        fun onResume()
         fun onDestroy()
-        fun onBackPressed()
     }
 }
