@@ -105,10 +105,6 @@ android {
     }
 }
 
-kapt {
-    correctErrorTypes = true
-}
-
 configurations.all {
     resolutionStrategy {
         force "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -134,14 +130,12 @@ dependencies {
     implementation mobileUiDependencies.timber
     implementation mobileUiDependencies.rxAndroid
     implementation mobileUiDependencies.glide
-    implementation mobileUiDependencies.dagger
-    implementation mobileUiDependencies.daggerSupport
     implementation mobileUiDependencies.butterknife
+    implementation mobileUiDependencies.kodeinJvm
+    implementation mobileUiDependencies.kodeinAndroidSupport
 
     testImplementation mobileUiTestDependencies.kotlinJUnit
 
-    kapt mobileUiDependencies.daggerCompiler
-    kapt mobileUiDependencies.daggerProcessor
     compileOnly mobileUiDependencies.glassfishAnnotation
 
     // Instrumentation test dependencies
@@ -169,7 +163,4 @@ dependencies {
         exclude module: 'recyclerview-v7'
         exclude module: 'design'
     }
-
-    kaptTest mobileUiDependencies.daggerCompiler
-    kaptAndroidTest mobileUiDependencies.daggerCompiler
 }

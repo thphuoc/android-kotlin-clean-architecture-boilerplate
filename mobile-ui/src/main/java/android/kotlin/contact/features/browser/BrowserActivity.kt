@@ -6,9 +6,10 @@ import android.kotlin.contact.base.BaseActivity
 import android.os.Bundle
 
 class BrowserActivity : BaseActivity() {
-    override fun layoutId(): Int = R.layout.root_activity
+    override val layoutId: Int = R.layout.root_activity
 
-    override fun getPresenter(): BaseContract.IBasePresenter? = null
+    override val presenter: BaseContract.IBasePresenter?
+        get() = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

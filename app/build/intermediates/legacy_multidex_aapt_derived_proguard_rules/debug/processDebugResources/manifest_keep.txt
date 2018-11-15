@@ -1,0 +1,2 @@
+# Referenced at C:\Users\PhuocTran\Documents\projects\android_kotlin_boilerplate\app\build\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:11
+-keep class androidx.multidex.MultiDexApplication { <init>(...); }

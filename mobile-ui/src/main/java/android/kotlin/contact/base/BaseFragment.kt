@@ -9,45 +9,43 @@ import android.view.ViewGroup
 import android.widget.Toast
 import butterknife.ButterKnife
 import butterknife.Unbinder
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
-import javax.inject.Inject
+import org.kodein.di.KodeinAware
+import org.kodein.di.KodeinContext
+import org.kodein.di.android.support.closestKodein
+import org.kodein.di.generic.kcontext
 
-abstract class BaseFragment : Fragment(), HasSupportFragmentInjector, UiConfigInterface, BrowserContactContract.IView {
+abstract class BaseFragment : Fragment(), UIContract, BrowserContactContract.IView, KodeinAware {
 
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+    override val kodeinContext: KodeinContext<*> get() = kcontext(activity)
+
+    override val kodein by closestKodein()
 
     private lateinit var unbinder: Unbinder
 
-    override fun supportFragmentInjector(): DispatchingAndroidInjector<Fragment>? {
-        return dispatchingAndroidInjector
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(layoutId(), container, false)
+        val view = inflater.inflate(layoutId, container, false)
         this.unbinder = ButterKnife.bind(this, view)
         return view
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.getPresenter()?.onViewLoaded()
+        presenter?.onViewLoaded()
     }
 
     override fun onStop() {
         super.onStop()
-        this.getPresenter()?.onStop()
+        presenter?.onStop()
     }
 
     override fun onResume() {
         super.onResume()
-        this.getPresenter()?.onResume()
+        presenter?.onResume()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        this.getPresenter()?.onDestroy()
+        presenter?.onDestroy()
         this.unbinder.unbind()
     }
 
