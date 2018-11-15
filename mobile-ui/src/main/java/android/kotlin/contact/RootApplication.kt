@@ -1,21 +1,24 @@
 package android.kotlin.contact
 
 import android.app.Application
-import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.androidModule
+import android.com.presentation.browser.BrowserContactPresenter
+import org.koin.android.ext.android.startKoin
+import org.koin.dsl.module.module
 import timber.log.Timber
 
 
-class RootApplication : Application(), KodeinAware {
+class RootApplication : Application() {
 
-    override val kodein = Kodein.lazy {
-        import(androidModule(this@RootApplication))
+    private val appModule = module {
+        scope("activity") {
+            BrowserContactPresenter()
+        }
     }
 
     override fun onCreate() {
         super.onCreate()
         setupTimber()
+        startKoin(this, listOf(appModule))
     }
 
     private fun setupTimber() {

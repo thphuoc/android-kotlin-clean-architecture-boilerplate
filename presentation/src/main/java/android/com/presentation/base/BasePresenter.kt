@@ -1,6 +1,8 @@
 package android.com.presentation.base
 
-open class BasePresenter(view: BaseContract.IBaseView): BaseContract.IBasePresenter {
+open class BasePresenter: BaseContract.IBasePresenter {
+    override lateinit var view: BaseContract.IBaseView
+
     override fun onViewLoaded() {
     }
 

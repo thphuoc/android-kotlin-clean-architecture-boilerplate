@@ -9,16 +9,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import butterknife.ButterKnife
 import butterknife.Unbinder
-import org.kodein.di.KodeinAware
-import org.kodein.di.KodeinContext
-import org.kodein.di.android.support.closestKodein
-import org.kodein.di.generic.kcontext
 
-abstract class BaseFragment : Fragment(), UIContract, BrowserContactContract.IView, KodeinAware {
-
-    override val kodeinContext: KodeinContext<*> get() = kcontext(activity)
-
-    override val kodein by closestKodein()
+abstract class BaseFragment : Fragment(), UIContract, BrowserContactContract.IView {
 
     private lateinit var unbinder: Unbinder
 

@@ -3,6 +3,7 @@ package android.com.data.repository
 import android.com.data.interactor.ContactRemote
 import android.com.domain.entities.Contact
 import android.com.domain.repository.ContactRepository
+import io.reactivex.Observable
 import io.reactivex.Single
 
 class ContactRepositoryImpl(private val remote: ContactRemote) : ContactRepository {
@@ -11,7 +12,7 @@ class ContactRepositoryImpl(private val remote: ContactRemote) : ContactReposito
         return remote.getContactById(id)
     }
 
-    override fun getContactList(): Single<List<Contact>> {
+    override fun getContactList(): Observable<List<Contact>> {
         return remote.getContactList()
     }
 

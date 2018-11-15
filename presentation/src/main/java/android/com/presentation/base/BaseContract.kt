@@ -7,6 +7,7 @@ class BaseContract {
     }
 
     interface IBasePresenter {
+        val view: IBaseView
         fun onViewLoaded()
         fun onStop()
         fun onResume()

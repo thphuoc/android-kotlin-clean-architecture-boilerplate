@@ -23,7 +23,7 @@ ext {
     daggerVersion = '2.11'
     glassfishAnnotationVersion = '10.0-b28'
     butterknifeVersion = '8.5.1'
-    kodeinVersion = '5.2.0'
+    koinVersion = '1.0.2'
 
     //Testing
     robolectricVersion = '3.4.2'
@@ -155,9 +155,9 @@ ext {
     ]
 
     mobileUiDependencies = [
-            kodeinAndroidSupport: "org.kodein.di:kodein-di-framework-android-support:${kodeinVersion}",
-            kodeinAndroid: "org.kodein.di:kodein-di-framework-android-x:${kodeinVersion}",
-            kodeinJvm: "org.kodein.di:kodein-di-generic-jvm:${kodeinVersion}",
+            koinAndroid: "org.koin:koin-android:${koinVersion}",
+            koinScope: "org.koin:koin-android-scope:${koinVersion}",
+            koinViewModel: "org.koin:koin-android-viewmodel:${koinVersion}",
             butterknife: "com.jakewharton:butterknife:${butterknifeVersion}",
             daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
             dagger:             "com.google.dagger:dagger:${daggerVersion}",

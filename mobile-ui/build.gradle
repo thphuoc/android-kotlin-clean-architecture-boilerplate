@@ -131,8 +131,15 @@ dependencies {
     implementation mobileUiDependencies.rxAndroid
     implementation mobileUiDependencies.glide
     implementation mobileUiDependencies.butterknife
-    implementation mobileUiDependencies.kodeinJvm
-    implementation mobileUiDependencies.kodeinAndroidSupport
+    implementation(mobileUiDependencies.koinAndroid) {
+        exclude group: 'com.android.support'
+    }
+    implementation(mobileUiDependencies.koinScope) {
+        exclude group: 'com.android.support'
+    }
+    implementation(mobileUiDependencies.koinViewModel) {
+        exclude group: 'com.android.support'
+    }
 
     testImplementation mobileUiTestDependencies.kotlinJUnit
 
