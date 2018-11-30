@@ -24,7 +24,7 @@ ext {
     glassfishAnnotationVersion = '10.0-b28'
     butterknifeVersion = '8.5.1'
     koinVersion = '1.0.2'
-
+    multidexVersion = '1.0.3'
     //Testing
     robolectricVersion = '3.4.2'
     jUnitVersion = '4.12'
@@ -65,9 +65,6 @@ ext {
             javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
             javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
             androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
-            retrofit:           "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-            retrofitConverter:  "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
-            retrofitAdapter:    "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}"
     ]
 
     presentationTestDependencies = [
@@ -90,9 +87,6 @@ ext {
             javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
             javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
             androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
-            retrofit:           "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-            retrofitConverter:  "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
-            retrofitAdapter:    "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}"
     ]
 
     dataTestDependencies = [
@@ -176,7 +170,8 @@ ext {
             timber:             "com.jakewharton.timber:timber:${timberVersion}",
             daggerSupport:      "com.google.dagger:dagger-android-support:${daggerVersion}",
             daggerProcessor:    "com.google.dagger:dagger-android-processor:${daggerVersion}",
-            glassfishAnnotation: "org.glassfish:javax.annotation:${glassfishAnnotationVersion}"
+            glassfishAnnotation: "org.glassfish:javax.annotation:${glassfishAnnotationVersion}",
+            multidex: "com.android.support:multidex:${multidexVersion}"
     ]
 
     mobileUiTestDependencies = [

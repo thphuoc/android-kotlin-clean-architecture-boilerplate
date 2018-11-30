@@ -1,24 +1,17 @@
 package android.kotlin.contact
 
-import android.app.Application
-import android.com.presentation.browser.BrowserContactPresenter
+import android.kotlin.contact.koin.module.presenterModule
+import androidx.multidex.MultiDexApplication
 import org.koin.android.ext.android.startKoin
-import org.koin.dsl.module.module
 import timber.log.Timber
 
 
-class RootApplication : Application() {
-
-    private val appModule = module {
-        scope("activity") {
-            BrowserContactPresenter()
-        }
-    }
+class RootApplication : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
         setupTimber()
-        startKoin(this, listOf(appModule))
+        startKoin(this, listOf(presenterModule))
     }
 
     private fun setupTimber() {

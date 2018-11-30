@@ -108,3 +108,4 @@
 ##---------------------------------------------------------------------------
 # RETRO LAMBDA
 -dontwarn java.lang.invoke.*
+-keep class android.arch.** { *; }

@@ -1,4 +1,4 @@
-package android.com.remote.models
+package android.com.remote.models.response
 
 import android.com.data.models.ContactEntity
 

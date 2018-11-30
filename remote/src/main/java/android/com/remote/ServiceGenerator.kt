@@ -24,7 +24,6 @@ internal class ServiceGenerator private constructor(val retrofit: Retrofit) {
             return this
         }
 
-
         fun build(): ServiceGenerator {
             val okHttpClient = makeOkHttpClient(
                     makeLoggingInterceptor(isDebug))

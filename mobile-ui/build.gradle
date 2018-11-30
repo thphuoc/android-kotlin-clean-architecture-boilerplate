@@ -65,6 +65,8 @@ android {
         }
 
         debug {
+            minifyEnabled false
+            useProguard false
             applicationIdSuffix ".debug"
             signingConfig signingConfigs.debug
             debuggable true
@@ -131,15 +133,14 @@ dependencies {
     implementation mobileUiDependencies.rxAndroid
     implementation mobileUiDependencies.glide
     implementation mobileUiDependencies.butterknife
-    implementation(mobileUiDependencies.koinAndroid) {
-        exclude group: 'com.android.support'
-    }
-    implementation(mobileUiDependencies.koinScope) {
-        exclude group: 'com.android.support'
-    }
-    implementation(mobileUiDependencies.koinViewModel) {
-        exclude group: 'com.android.support'
-    }
+    implementation "org.koin:koin-android:1.0.2"
+//    implementation(mobileUiDependencies.koinScope) {
+//        exclude group: 'com.android.support'
+//    }
+//    implementation(mobileUiDependencies.koinViewModel) {
+//        exclude group: 'com.android.support'
+//    }
+    implementation "android.arch.lifecycle:runtime:1.1.1"
 
     testImplementation mobileUiTestDependencies.kotlinJUnit
 

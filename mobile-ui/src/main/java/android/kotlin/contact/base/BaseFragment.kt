@@ -22,17 +22,17 @@ abstract class BaseFragment : Fragment(), UIContract, BrowserContactContract.IVi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter?.onViewLoaded()
+//        presenter?.onViewLoaded()
     }
 
     override fun onStop() {
         super.onStop()
-        presenter?.onStop()
+//        presenter?.onStop()
     }
 
     override fun onResume() {
         super.onResume()
-        presenter?.onResume()
+//        presenter?.onResume()
     }
 
     override fun onDestroy() {

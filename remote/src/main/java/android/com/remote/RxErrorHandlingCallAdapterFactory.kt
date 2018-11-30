@@ -53,15 +53,16 @@ internal class RxErrorHandlingCallAdapterFactory private constructor() : CallAda
             }
             // A network error happened
             return if (throwable is IOException) {
-                RetrofitException(ErrorEntity(-1, "Network error"))
-            } else RetrofitException(ErrorEntity(0, "Unknown error"))
-
-            // We don't know what happened. We need to simply convert to an unknown error
-
+                RetrofitException(ErrorEntity(NETWORK_ERROR_CODE, "Network error"))
+            } else {
+                RetrofitException(ErrorEntity(UNKNOWN_ERROR_CODE, "Unknown error"))
+            }
         }
     }
 
     companion object {
+        private const val NETWORK_ERROR_CODE = -1
+        private const val UNKNOWN_ERROR_CODE = 0
 
         fun create(): CallAdapter.Factory {
             return RxErrorHandlingCallAdapterFactory()
