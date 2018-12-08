@@ -1,6 +1,7 @@
-package android.kotlin.contact.base
+package com.android.tasktodo.base
 
-import android.com.presentation.browser.BrowserContactContract
+import android.com.presentation.base.BaseContract
+import android.com.presentation.features.browser.BrowserContactContract
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,8 @@ import butterknife.Unbinder
 abstract class BaseFragment : Fragment(), UIContract, BrowserContactContract.IView {
 
     private lateinit var unbinder: Unbinder
+    override val presenter: BaseContract.IBasePresenter?
+        get() = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(layoutId, container, false)
@@ -22,17 +25,17 @@ abstract class BaseFragment : Fragment(), UIContract, BrowserContactContract.IVi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        presenter?.onViewLoaded()
+        presenter?.onViewLoaded()
     }
 
     override fun onStop() {
         super.onStop()
-//        presenter?.onStop()
+        presenter?.onStop()
     }
 
     override fun onResume() {
         super.onResume()
-//        presenter?.onResume()
+        presenter?.onResume()
     }
 
     override fun onDestroy() {

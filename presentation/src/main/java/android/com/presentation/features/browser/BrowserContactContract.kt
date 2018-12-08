@@ -1,4 +1,4 @@
-package android.com.presentation.browser
+package android.com.presentation.features.browser
 
 import android.com.domain.entities.Contact
 import android.com.presentation.base.BaseContract

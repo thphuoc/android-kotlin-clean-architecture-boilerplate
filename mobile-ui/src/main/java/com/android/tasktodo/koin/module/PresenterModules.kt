@@ -1,7 +1,7 @@
-package android.kotlin.contact.koin.module
+package com.android.tasktodo.koin.module
 
-import android.com.presentation.browser.BrowserContactContract
-import android.com.presentation.browser.BrowserContactPresenter
+import android.com.presentation.features.browser.BrowserContactContract
+import android.com.presentation.features.browser.BrowserContactPresenter
 import org.koin.dsl.module.module
 
 val presenterModule = module {

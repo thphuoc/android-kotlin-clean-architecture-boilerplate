@@ -143,6 +143,7 @@ dependencies {
         exclude group: 'com.android.support'
     }
     implementation "android.arch.lifecycle:runtime:1.1.1"
+//    implementation mobileUiDependencies.firebase
 
     testImplementation mobileUiTestDependencies.kotlinJUnit
 
@@ -174,3 +175,4 @@ dependencies {
         exclude module: 'design'
     }
 }
+//apply plugin: 'com.google.gms.google-services'

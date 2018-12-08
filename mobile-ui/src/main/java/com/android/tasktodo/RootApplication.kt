@@ -1,6 +1,7 @@
-package android.kotlin.contact
+package com.android.tasktodo
 
-import android.kotlin.contact.koin.module.presenterModule
+import android.kotlin.contact.BuildConfig
+import com.android.tasktodo.koin.module.presenterModule
 import androidx.multidex.MultiDexApplication
 import org.koin.android.ext.android.startKoin
 import timber.log.Timber
