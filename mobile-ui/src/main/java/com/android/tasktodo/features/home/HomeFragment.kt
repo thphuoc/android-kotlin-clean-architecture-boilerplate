@@ -35,7 +35,7 @@ class HomeFragment : BaseFragment(), BrowserContactContract.IView {
     }
 
     private fun setupViewPager() {
-        val adapter = HomePagerAdapter(fragmentManager)
+        val adapter = HomePagerAdapter(fragmentManager!!)
         adapter.addFrag(TodoFragment())
         adapter.addFrag(TaskInProgressFragment())
         adapter.addFrag(TaskCompletedFragment())
@@ -45,6 +45,11 @@ class HomeFragment : BaseFragment(), BrowserContactContract.IView {
     }
 
     companion object {
-        private val listIcon: IntArray = intArrayOf(R.drawable.abc_ab_share_pack_mtrl_alpha)
+        val listIcon = intArrayOf(
+                R.drawable.icon_camera,
+                R.drawable.icon_gallery,
+                R.drawable.icon_map,
+                R.drawable.icon_settings,
+                R.drawable.icon_settings)
     }
 }

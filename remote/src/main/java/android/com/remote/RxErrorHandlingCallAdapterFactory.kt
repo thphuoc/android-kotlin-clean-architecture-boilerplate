@@ -1,6 +1,6 @@
 package android.com.remote
 
-import android.com.data.models.ErrorEntity
+import android.com.remote.models.entries.ErrorEntity
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single

@@ -2,19 +2,27 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = "0.7.5.201505241946"
+}
 
 android {
+    publishNonDefault true
     compileSdkVersion 28
     defaultConfig {
-        applicationId "android.kotlin.boilerplate"
+        applicationId "com.android.tasktodo"
         multiDexEnabled true
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+
+
     dexOptions {
         preDexLibraries = false
         dexInProcess = false
@@ -46,13 +54,13 @@ android {
         }
         release {
             try {
-                storeFile file("prod.keystore.jks")
+                storeFile file("../prod.keystore.jks")
                 storePassword KEYSTORE_PASSWORD
                 keyAlias 'ProductionKeyStore'
                 keyPassword KEYSTORE_PASSWORD
             } catch (ignored) {
                 throw new InvalidUserDataException(
-                        "You should define KIOSK_KEYSTORE_PASSWORD and KIOSK_KEY_PASSWORD in gradle.properties.")
+                        "You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
             }
         }
     }
@@ -70,23 +78,31 @@ android {
             applicationIdSuffix ".debug"
             signingConfig signingConfigs.debug
             debuggable true
-
+            testCoverageEnabled = true
         }
     }
 
-    def dimensDefault = "default"
-
+    flavorDimensions "full"
     productFlavors {
-        flavorDimensions dimensDefault
-
         dev {
-            dimension dimensDefault
+            dimension "full"
         }
         prod {
-            dimension dimensDefault
+            dimension "full"
+            def versionPropsFile = file('version.properties')
+            if (versionPropsFile.canRead()) {
+                Properties versionProps = new Properties()
+                versionProps.load(new FileInputStream(versionPropsFile))
+                def code = versionProps['VERSION_CODE'].toInteger() + 1
+                versionProps['VERSION_CODE'] = code.toString()
+                versionProps.store(versionPropsFile.newWriter(), null)
+                versionCode code
+            } else {
+                throw new GradleException("Could not read version.properties!")
+            }
         }
-        sit {
-            dimension dimensDefault
+        staging {
+            dimension "full"
         }
     }
 
@@ -105,6 +121,18 @@ android {
             ]
         }
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            def flavor = variant.productFlavors[0].name.capitalize()
+            def versionName = variant.versionName
+            def versionCode = variant.versionCode
+            def date = new Date()
+            def formattedDate = date.format('ddMMyy')
+            def buildType = variant.variantData.variantConfiguration.buildType.name
+            outputFileName = "Sample_${flavor}_${buildType}_${versionName}.${versionCode}_${formattedDate}.apk"
+        }
+    }
 }
 
 configurations.all {
@@ -115,6 +143,9 @@ configurations.all {
 
 dependencies {
     implementation project(':presentation')
+    implementation project(':domain')
+    implementation project(':data')
+    implementation project(':remote')
     def mobileUiDependencies = rootProject.ext.mobileUiDependencies
     def mobileUiTestDependencies = rootProject.ext.mobileUiTestDependencies
 
@@ -143,7 +174,6 @@ dependencies {
         exclude group: 'com.android.support'
     }
     implementation "android.arch.lifecycle:runtime:1.1.1"
-//    implementation mobileUiDependencies.firebase
 
     testImplementation mobileUiTestDependencies.kotlinJUnit
 

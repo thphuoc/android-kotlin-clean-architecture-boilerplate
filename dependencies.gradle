@@ -174,7 +174,8 @@ ext {
             daggerProcessor:    "com.google.dagger:dagger-android-processor:${daggerVersion}",
             glassfishAnnotation: "org.glassfish:javax.annotation:${glassfishAnnotationVersion}",
             multidex: "com.android.support:multidex:${multidexVersion}",
-            firebase: "com.google.firebase:firebase-core:${firebaseVersion}"
+            firebase: "com.google.firebase:firebase-core:${firebaseVersion}",
+            navigationBottom: "com.tbuonomo:morph-bottom-navigation:1.0.1"
     ]
 
     mobileUiTestDependencies = [

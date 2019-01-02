@@ -1,7 +1,6 @@
 package android.com.remote.services
 
-import android.com.data.models.ContactEntity
-import android.com.remote.ServiceEndpoint
+import android.com.remote.models.entries.ContactEntity
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -9,12 +8,12 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface ContactService {
-    @GET(ServiceEndpoint.GET_CONTACT_DETAIL)
+    @GET("/contact")
     fun getContactById(@Query("id") id: String): Single<ContactEntity>
 
-    @POST(ServiceEndpoint.REMOVE_CONTACT)
+    @POST("/remove")
     fun removeContactById(@Query("id") id: String): Single<Boolean>
 
-    @GET(ServiceEndpoint.LIST_CONTACT)
+    @GET("/list")
     fun getContactList(): Observable<List<ContactEntity>>
 }

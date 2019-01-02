@@ -1,7 +1,6 @@
 package com.android.tasktodo.base
 
 import android.com.presentation.base.BaseContract
-import android.com.presentation.features.browser.BrowserContactContract
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +10,7 @@ import android.widget.Toast
 import butterknife.ButterKnife
 import butterknife.Unbinder
 
-abstract class BaseFragment : Fragment(), UIContract, BrowserContactContract.IView {
+abstract class BaseFragment : Fragment(), UIContract, BaseContract.IBaseView {
 
     private lateinit var unbinder: Unbinder
     override val presenter: BaseContract.IBasePresenter?

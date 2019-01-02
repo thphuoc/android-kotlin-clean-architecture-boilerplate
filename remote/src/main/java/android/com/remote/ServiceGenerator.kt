@@ -9,7 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-internal class ServiceGenerator private constructor(val retrofit: Retrofit) {
+class ServiceGenerator private constructor(val retrofit: Retrofit) {
     class Builder {
         private var isDebug: Boolean = false
         private var baseUrl: String = ""
