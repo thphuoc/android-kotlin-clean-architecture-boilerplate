@@ -1,0 +1,3 @@
+I. Best practice with clean architecture for mobile application
+   1. Domain module: This is core module of the application. It's in charge of handle all of business logic of the app.
+   Each of business logic should be handle by a single use case java class. Someone will have a question like: Why do we have to handle in a single
