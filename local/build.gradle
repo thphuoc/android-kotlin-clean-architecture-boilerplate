@@ -1,7 +1,11 @@
-apply plugin: 'kotlin'
+apply plugin: 'com.android.library'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+android {
+    compileSdkVersion 28
+}
 
 dependencies {
     def remoteDependencies = rootProject.ext.remoteDependencies
@@ -23,6 +27,4 @@ dependencies {
     testImplementation remoteTestDependencies.kotlinJUnit
     testImplementation remoteTestDependencies.mockito
     testImplementation remoteTestDependencies.assertj
-
-    implementation project(path: ':data', configuration: 'default')
 }
