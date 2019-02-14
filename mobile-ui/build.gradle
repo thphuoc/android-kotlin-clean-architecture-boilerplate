@@ -145,57 +145,53 @@ dependencies {
     implementation project(':presentation')
     implementation project(':domain')
     implementation project(':data')
-    implementation project(':remote')
-    def mobileUiDependencies = rootProject.ext.mobileUiDependencies
-    def mobileUiTestDependencies = rootProject.ext.mobileUiTestDependencies
+    def dependencies = rootProject.ext.dependencies
 
-    implementation mobileUiDependencies.javaxAnnotation
+    implementation dependencies.javaxAnnotation
 
-    implementation mobileUiDependencies.kotlin
-    implementation mobileUiDependencies.javaxInject
-    implementation mobileUiDependencies.rxKotlin
-    implementation mobileUiDependencies.androidAnnotations
-    implementation mobileUiDependencies.androidSupportV4
-    implementation mobileUiDependencies.androidSupportV13
-    implementation mobileUiDependencies.appCompatV7
-    implementation mobileUiDependencies.supportRecyclerView
-    implementation mobileUiDependencies.supportDesign
-    implementation mobileUiDependencies.timber
-    implementation mobileUiDependencies.rxAndroid
-    implementation mobileUiDependencies.glide
-    implementation mobileUiDependencies.butterknife
-    implementation(mobileUiDependencies.koinAndroid) {
-        exclude group: 'com.android.support'
-    }
-    implementation(mobileUiDependencies.koinScope) {
-        exclude group: 'com.android.support'
-    }
-    implementation(mobileUiDependencies.koinViewModel) {
-        exclude group: 'com.android.support'
-    }
+    implementation dependencies.kotlin
+    implementation dependencies.javaxInject
+    implementation dependencies.rxKotlin
+    implementation dependencies.androidAnnotations
+    implementation dependencies.androidSupportV4
+    implementation dependencies.androidSupportV13
+    implementation dependencies.appCompatV7
+    implementation dependencies.supportRecyclerView
+    implementation dependencies.supportDesign
+    implementation dependencies.timber
+//    implementation dependencies.rxAndroid
+    implementation dependencies.glide
+
+    debugImplementation dependencies.leakcanary // https://github.com/square/leakcanary/blob/master/CHANGELOG.md
+    releaseImplementation dependencies.leakcanary_no_op
+    testImplementation dependencies.leakcanary_no_op
+
+    kapt dependencies.toothpick_compiler
+    implementation dependencies.toothpickRuntime
+    implementation dependencies.toothpickSmoothie
+
     implementation "android.arch.lifecycle:runtime:1.1.1"
 
-    testImplementation mobileUiTestDependencies.kotlinJUnit
+    testImplementation dependencies.kotlinJUnit
 
-    compileOnly mobileUiDependencies.glassfishAnnotation
 
     // Instrumentation test dependencies
-    androidTestImplementation mobileUiTestDependencies.junit
-    androidTestImplementation mobileUiTestDependencies.mockito
-    androidTestImplementation mobileUiTestDependencies.mockitoAndroid
-    androidTestImplementation(mobileUiTestDependencies.espressoCore) {
+    androidTestImplementation dependencies.junit
+    androidTestImplementation dependencies.mockito
+    androidTestImplementation dependencies.mockitoAndroid
+    androidTestImplementation(dependencies.espressoCore) {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    androidTestImplementation(mobileUiTestDependencies.androidRunner) {
+    androidTestImplementation(dependencies.androidRunner) {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    androidTestImplementation(mobileUiTestDependencies.androidRules) {
+    androidTestImplementation(dependencies.androidRules) {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    androidTestImplementation(mobileUiTestDependencies.espressoIntents) {
+    androidTestImplementation(dependencies.espressoIntents) {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    androidTestImplementation(mobileUiTestDependencies.espressoContrib) {
+    androidTestImplementation(dependencies.espressoContrib) {
         exclude module: 'appcompat'
         exclude module: 'appcompat-v7'
         exclude module: 'support-v4'

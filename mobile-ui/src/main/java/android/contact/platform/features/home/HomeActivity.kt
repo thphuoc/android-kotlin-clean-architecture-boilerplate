@@ -1,8 +1,8 @@
 package android.contact.platform.features.home
 
+import android.contact.platform.R
 import android.contact.presentation.base.BaseContract
 import android.contact.platform.base.BaseActivity
-import android.contact.contact.R
 import android.os.Bundle
 
 class HomeActivity : BaseActivity() {

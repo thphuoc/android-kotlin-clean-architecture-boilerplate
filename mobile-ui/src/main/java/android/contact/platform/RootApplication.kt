@@ -1,10 +1,11 @@
 package android.contact.platform
 
-import android.contact.contact.BuildConfig
-import android.contact.platform.koin.module.presenterModule
+import android.contact.platform.di.ToothpickActivityLifecycleCallbacks
+import android.contact.platform.di.openApplicationScope
 import androidx.multidex.MultiDexApplication
-import org.koin.android.ext.android.startKoin
+import com.squareup.leakcanary.LeakCanary
 import timber.log.Timber
+import toothpick.Toothpick
 
 
 class RootApplication : MultiDexApplication() {
@@ -12,7 +13,14 @@ class RootApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         setupTimber()
-        startKoin(this, listOf(presenterModule))
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This accept is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this accept.
+            return
+        }
+        LeakCanary.install(this)
+        Toothpick.inject(this, openApplicationScope(this))
+        registerActivityLifecycleCallbacks(ToothpickActivityLifecycleCallbacks())
     }
 
     private fun setupTimber() {

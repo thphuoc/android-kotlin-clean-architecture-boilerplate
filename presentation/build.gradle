@@ -5,23 +5,21 @@ targetCompatibility = 1.8
 
 configurations.all {
     resolutionStrategy {
-        force "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+        force "org.jetbrains.kotlin:kotlin-stdlib:1.3.10"
     }
 }
 
 dependencies {
-    def presentationDependencies = rootProject.ext.cacheDependencies
-    def presentationTestDependencies = rootProject.ext.cacheTestDependencies
+    def dependencies = rootProject.ext.dependencies
 
-    implementation presentationDependencies.javaxAnnotation
+    implementation dependencies.javaxAnnotation
 
-    implementation presentationDependencies.kotlin
-    implementation presentationDependencies.javaxInject
-    implementation presentationDependencies.rxKotlin
+    implementation dependencies.kotlin
+    implementation dependencies.javaxInject
+    implementation dependencies.rxKotlin
 
-    testImplementation presentationTestDependencies.junit
-    testImplementation presentationTestDependencies.mockito
-    testImplementation presentationTestDependencies.assertj
-    testImplementation presentationTestDependencies.robolectric
+    testImplementation dependencies.junit
+    testImplementation dependencies.mockito
+    testImplementation dependencies.assertj
     implementation project(':domain')
 }

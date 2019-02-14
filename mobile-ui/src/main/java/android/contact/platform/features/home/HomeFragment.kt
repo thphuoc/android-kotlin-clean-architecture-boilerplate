@@ -2,8 +2,8 @@ package android.contact.platform.features.home
 
 import android.contact.domain.entities.Contact
 import android.contact.presentation.features.browser.BrowserContactContract
-import android.contact.contact.R
-import android.contact.contact.configs.AppConfigs
+import android.contact.platform.R
+import android.contact.platform.configs.AppConfigs
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -12,7 +12,6 @@ import android.contact.platform.features.home.contact_list_tabs.TaskCompletedFra
 import android.contact.platform.features.home.history_tabs.TaskInProgressFragment
 import android.contact.platform.features.home.call_tabs.MyHiringFragment
 import android.contact.platform.features.home.profile.ProfileFragment
-import android.contact.platform.features.home.todo.TodoFragment
 import kotlinx.android.synthetic.main.home_fragment.*
 
 class HomeFragment : BaseFragment(), BrowserContactContract.IView {
@@ -36,7 +35,6 @@ class HomeFragment : BaseFragment(), BrowserContactContract.IView {
 
     private fun setupViewPager() {
         val adapter = HomePagerAdapter(fragmentManager!!)
-        adapter.addFrag(TodoFragment())
         adapter.addFrag(TaskInProgressFragment())
         adapter.addFrag(TaskCompletedFragment())
         adapter.addFrag(MyHiringFragment())
