@@ -10,6 +10,7 @@ dependencies {
     implementation dependencies.javaxInject
     implementation dependencies.rxKotlin
     implementation dependencies.kotlin
+    implementation dependencies.parseCommunity
 
     testImplementation dependencies.junit
     testImplementation dependencies.mockito

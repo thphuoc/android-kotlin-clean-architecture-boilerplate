@@ -1,0 +1,38 @@
+package ride.customer.domain.entities
+
+import ride.customer.domain.entities._enum.VehicleType
+import java.util.*
+
+data class Ride(val fromAddress: String?,
+                val fromPoint: String?,
+                val toAddress: String?,
+                val toCoordinate: String?,
+                val middleAddress: String?,
+                val middleCoordinate: String?,
+                val transitCompleted: Boolean,
+                val vehicleType: VehicleType?,
+                val rider: User?,
+                val assignedDriver: User?,
+                val driver: ActiveDriver?,
+                val status: String?,
+                val surgeValue: Int?,
+                val estimatedDistance: Int?,
+                val estimatedDuration: Int?,
+                val estimatedFare: Int?,
+                val finalFare: Int?,
+                val discountValue: Int?,
+                val tollFee: Int?,
+                val promoCode: String,
+                val appliedPromoCode: PromoCode?,
+                val paymentMethod: String?,
+                val actualDriverRoute: String?,
+                val refinedDriverRoute: String?,
+                val acceptedAt: Date?,
+                val startedAt: Date?,
+                val finishedAt: Date?,
+                val cancelledAt: Date?,
+                val driverRating: Int?,
+                val riderRating: Int?,
+                val riderRatingMessage: String?,
+                val bookingNote: String?,
+                val cancelReason: String?)

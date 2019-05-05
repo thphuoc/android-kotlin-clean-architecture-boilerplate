@@ -28,6 +28,9 @@ ext {
             toothpickRuntime   : "com.github.stephanenicolas.toothpick:toothpick-runtime:1.1.2",
             toothpickSmoothie  : "com.github.stephanenicolas.toothpick:smoothie:1.1.2",
 
+            //Parse SDK
+            parseCommunity: "com.github.parse-community.Parse-SDK-Android:fcm:1.19.0",
+
             //Http: Retrofit
             okHttp             : "com.squareup.okhttp3:okhttp:3.8.1",
             okHttpLogger       : "com.squareup.okhttp3:logging-interceptor:3.8.1",

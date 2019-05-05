@@ -12,7 +12,7 @@ android {
     publishNonDefault true
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.android.tasktodo"
+        applicationId "ride.customer.ui"
         multiDexEnabled true
         minSdkVersion 19
         targetSdkVersion 28
@@ -169,6 +169,7 @@ dependencies {
     kapt dependencies.toothpick_compiler
     implementation dependencies.toothpickRuntime
     implementation dependencies.toothpickSmoothie
+    implementation dependencies.parseCommunity
 
     implementation "android.arch.lifecycle:runtime:1.1.1"
 
