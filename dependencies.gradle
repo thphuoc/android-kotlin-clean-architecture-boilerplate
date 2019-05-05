@@ -22,7 +22,7 @@ ext {
     glideVersion = '4.0.0'
     daggerVersion = '2.11'
     glassfishAnnotationVersion = '10.0-b28'
-    butterknifeVersion = '8.5.1'
+    butterknifeVersion = '10.1.0'
     koinVersion = '1.0.2'
     multidexVersion = '1.0.3'
     //Testing
